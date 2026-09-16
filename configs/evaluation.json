@@ -1,0 +1,119 @@
+{
+  "protocol_version": "1.0",
+  "status": "core_design_locked",
+  "review_date": "2026-09-17",
+  "seed": 42,
+  "pilot_manifest": "results/metrics/pilot_manifest.csv",
+  "horizons_days": [
+    7,
+    14,
+    28
+  ],
+  "backtest": "rolling_origin_fixed_history",
+  "primary_history_days": 365,
+  "history_sensitivity_days": [
+    90,
+    180,
+    365
+  ],
+  "validation_origins": [
+    "2015-11-08",
+    "2015-12-06",
+    "2016-01-03"
+  ],
+  "test_origins": [
+    "2016-01-31",
+    "2016-02-28",
+    "2016-03-27",
+    "2016-04-24"
+  ],
+  "freeze_all_model_choices_before_test": true,
+  "allow_scheduled_refit_with_past_actuals": true,
+  "primary_scenario": "univariate",
+  "secondary_scenario": "business_features",
+  "unequal_information_label": "realistic_deployment",
+  "accuracy_metrics": [
+    "MAE",
+    "WAPE",
+    "RMSSE"
+  ],
+  "reliability": {
+    "across_series": [
+      "median",
+      "p90",
+      "p95",
+      "standard_deviation",
+      "IQR",
+      "maximum"
+    ],
+    "series_aggregation": "mean_over_all_scheduled_origins_require_complete_scores",
+    "quantile_interpolation": "linear",
+    "report_origin_distributions": true,
+    "report_win_rate": true,
+    "report_failures": true
+  },
+  "practicality": [
+    "runtime",
+    "memory",
+    "hardware",
+    "setup_effort"
+  ],
+  "pilot_profile_days": 730,
+  "cold_starts_included": false,
+  "model_implementation_started": false,
+  "execution_details_pending": [
+    "checkpoints",
+    "search_spaces",
+    "tuning_budgets",
+    "timeouts",
+    "optional_seasonality"
+  ],
+  "model_families": {
+    "naive_reference_baselines": {
+      "models": [
+        "last_value",
+        "weekly_seasonal_naive"
+      ],
+      "definition": "Reference forecasting rules, reported separately from fitted families."
+    },
+    "locally_fitted_statistical": {
+      "models": [
+        "ARIMA",
+        "ETS"
+      ],
+      "fit_scope": "per_series"
+    },
+    "locally_trained_machine_learning": {
+      "models": [
+        "XGBoost"
+      ],
+      "fit_scope": "pooled_global_across_pilot_series"
+    },
+    "pretrained_time_series_foundation": {
+      "models": [
+        "Chronos-2",
+        "TimesFM",
+        "Moirai"
+      ],
+      "initial_mode": "zero_shot_frozen_checkpoint"
+    },
+    "local_definition": "Fitted/trained on the permitted local dataset; does not imply per-series fitting or local hardware."
+  },
+  "validation_model_selection": {
+    "primary_metric": "RMSSE",
+    "direction": "minimize",
+    "within_horizon_aggregation": "macro_mean_over_eligible_validation_series_origin_cases",
+    "across_horizon_aggregation": "equal_weighted_mean",
+    "horizon_weights": {
+      "7": 0.3333333333333333,
+      "14": 0.3333333333333333,
+      "28": 0.3333333333333333
+    },
+    "tie_break_metric": "MAE",
+    "fallback_if_all_rmsse_undefined": "MAE",
+    "mae_uses_same_aggregation": true,
+    "redistribute_missing_horizon_weights": false,
+    "selection_scope": "separately_per_history_length_and_scenario",
+    "selection_data": "validation_only"
+  }
+}

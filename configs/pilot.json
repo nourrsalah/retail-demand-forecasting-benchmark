@@ -1,0 +1,7 @@
+{
+  "seed": 42,
+  "n_series": 200,
+  "profile_days": 730,
+  "intermittent_zero_fraction": 0.5,
+  "volatile_cv": 1.0
+}

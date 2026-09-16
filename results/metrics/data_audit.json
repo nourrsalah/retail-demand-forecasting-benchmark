@@ -1,0 +1,101 @@
+{
+  "shapes": {
+    "calendar": [
+      1969,
+      14
+    ],
+    "sales": [
+      30490,
+      1947
+    ],
+    "prices": [
+      6841121,
+      4
+    ]
+  },
+  "sales_days": 1941,
+  "sales_start": "2011-01-29",
+  "sales_end": "2016-05-22",
+  "calendar_end": "2016-06-19",
+  "items": 3049,
+  "stores": 10,
+  "states": [
+    "CA",
+    "TX",
+    "WI"
+  ],
+  "categories": [
+    "FOODS",
+    "HOBBIES",
+    "HOUSEHOLD"
+  ],
+  "missing_values": {
+    "calendar": {
+      "date": 0,
+      "wm_yr_wk": 0,
+      "weekday": 0,
+      "wday": 0,
+      "month": 0,
+      "year": 0,
+      "d": 0,
+      "event_name_1": 1807,
+      "event_type_1": 1807,
+      "event_name_2": 1964,
+      "event_type_2": 1964,
+      "snap_CA": 0,
+      "snap_TX": 0,
+      "snap_WI": 0
+    },
+    "sales_total": 0,
+    "prices": {
+      "store_id": 0,
+      "item_id": 0,
+      "wm_yr_wk": 0,
+      "sell_price": 0
+    }
+  },
+  "sales_zero_fraction": 0.6799776584040612,
+  "weekly_price_coverage_fraction": 0.7927072445028562,
+  "weekly_price_coverage_denominator": 8476220,
+  "snap_days": {
+    "snap_CA": 650,
+    "snap_TX": 650,
+    "snap_WI": 650
+  },
+  "checks": "Unique keys, continuous calendar, complete nonnegative sales, positive observed prices passed",
+  "pilot": {
+    "series": 200,
+    "rows": 388200,
+    "profile_end": "2013-01-27",
+    "excluded_inactive_series": 8296,
+    "demand_types": {
+      "intermittent": 114,
+      "volatile": 46,
+      "stable": 40
+    },
+    "volume_bands": {
+      "high": 103,
+      "medium": 57,
+      "low": 40
+    },
+    "stores": {
+      "CA_1": 19,
+      "CA_2": 20,
+      "CA_3": 20,
+      "CA_4": 19,
+      "TX_1": 21,
+      "TX_2": 19,
+      "TX_3": 21,
+      "WI_1": 21,
+      "WI_2": 20,
+      "WI_3": 20
+    },
+    "categories": {
+      "FOODS": 67,
+      "HOBBIES": 67,
+      "HOUSEHOLD": 66
+    },
+    "missing_price_rows": 18508,
+    "positive_sales_missing_price_rows": 0
+  }
+}
