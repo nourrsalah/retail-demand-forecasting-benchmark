@@ -60,7 +60,7 @@
   ],
   "pilot_profile_days": 730,
   "cold_starts_included": false,
-  "model_implementation_started": false,
+  "model_implementation_started": true,
   "execution_details_pending": [
     "checkpoints",
     "search_spaces",

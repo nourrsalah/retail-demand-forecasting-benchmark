@@ -1,0 +1,25 @@
+{
+  "stage": 4,
+  "split": "validation",
+  "scenario": "univariate",
+  "history_days": 365,
+  "seed": 42,
+  "workers": 4,
+  "fit_forecast_timeout_seconds": 120,
+  "maxiter": 300,
+  "warm_inference_repeats": 3,
+  "rss_sample_interval_seconds": 0.01,
+  "nonconvergence_policy": "failure_no_fallback",
+  "selection_scope": "one_candidate_per_family_across_pilot",
+  "candidate_comparison_support": "common_valid_series_origin_cases_across_candidates_and_horizons_within_family",
+  "candidates": [
+    {"id": "last_value", "family": "naive_reference_baselines", "model": "last_value"},
+    {"id": "weekly_seasonal_naive", "family": "naive_reference_baselines", "model": "weekly_seasonal_naive"},
+    {"id": "arima_100", "family": "locally_fitted_statistical", "model": "ARIMA", "order": [1, 0, 0], "seasonal_order": [0, 0, 0, 0], "trend": "c"},
+    {"id": "arima_011", "family": "locally_fitted_statistical", "model": "ARIMA", "order": [0, 1, 1], "seasonal_order": [0, 0, 0, 0], "trend": "n"},
+    {"id": "sarima_100_100_7", "family": "locally_fitted_statistical", "model": "ARIMA", "order": [1, 0, 0], "seasonal_order": [1, 0, 0, 7], "trend": "c"},
+    {"id": "ets_ann", "family": "locally_fitted_statistical", "model": "ETS", "error": "add", "trend": null, "seasonal": null, "damped_trend": false},
+    {"id": "ets_aadn", "family": "locally_fitted_statistical", "model": "ETS", "error": "add", "trend": "add", "seasonal": null, "damped_trend": true},
+    {"id": "ets_ana_7", "family": "locally_fitted_statistical", "model": "ETS", "error": "add", "trend": null, "seasonal": "add", "seasonal_periods": 7, "damped_trend": false}
+  ]
+}

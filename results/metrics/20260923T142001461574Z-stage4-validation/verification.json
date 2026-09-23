@@ -1,0 +1,18 @@
+{
+  "unit_tests_passed": 13,
+  "candidate_forecast_rows": 235200,
+  "selected_forecast_rows": 117600,
+  "checks": [
+    "unique output keys",
+    "identical horizon prefixes",
+    "nonnegative finite successful forecasts",
+    "failed forecasts remain missing",
+    "validation targets end 2016-01-31",
+    "equal horizon selection weights",
+    "logged fitting source/configuration hashes match",
+    "locked protocol decisions unchanged"
+  ],
+  "figures_visually_reviewed": 2,
+  "test_forecasts_generated": false,
+  "report_source_sha256": "c2ac99cd8186a15315d82df4c99d85f621750fb5370b78e9c468f43ee94e799d"
+}

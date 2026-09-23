@@ -1,0 +1,278 @@
+{
+  "run_id": "20260923T142001461574Z-stage4-validation",
+  "state": "complete",
+  "split": "validation",
+  "smoke": false,
+  "started_utc": "2026-09-23T14:20:01.682213+00:00",
+  "settings": {
+    "stage": 4,
+    "split": "validation",
+    "scenario": "univariate",
+    "history_days": 365,
+    "seed": 42,
+    "workers": 4,
+    "fit_forecast_timeout_seconds": 120,
+    "maxiter": 300,
+    "warm_inference_repeats": 3,
+    "rss_sample_interval_seconds": 0.01,
+    "nonconvergence_policy": "failure_no_fallback",
+    "selection_scope": "one_candidate_per_family_across_pilot",
+    "candidate_comparison_support": "common_valid_series_origin_cases_across_candidates_and_horizons_within_family",
+    "candidates": [
+      {
+        "id": "last_value",
+        "family": "naive_reference_baselines",
+        "model": "last_value"
+      },
+      {
+        "id": "weekly_seasonal_naive",
+        "family": "naive_reference_baselines",
+        "model": "weekly_seasonal_naive"
+      },
+      {
+        "id": "arima_100",
+        "family": "locally_fitted_statistical",
+        "model": "ARIMA",
+        "order": [
+          1,
+          0,
+          0
+        ],
+        "seasonal_order": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "trend": "c"
+      },
+      {
+        "id": "arima_011",
+        "family": "locally_fitted_statistical",
+        "model": "ARIMA",
+        "order": [
+          0,
+          1,
+          1
+        ],
+        "seasonal_order": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "trend": "n"
+      },
+      {
+        "id": "sarima_100_100_7",
+        "family": "locally_fitted_statistical",
+        "model": "ARIMA",
+        "order": [
+          1,
+          0,
+          0
+        ],
+        "seasonal_order": [
+          1,
+          0,
+          0,
+          7
+        ],
+        "trend": "c"
+      },
+      {
+        "id": "ets_ann",
+        "family": "locally_fitted_statistical",
+        "model": "ETS",
+        "error": "add",
+        "trend": null,
+        "seasonal": null,
+        "damped_trend": false
+      },
+      {
+        "id": "ets_aadn",
+        "family": "locally_fitted_statistical",
+        "model": "ETS",
+        "error": "add",
+        "trend": "add",
+        "seasonal": null,
+        "damped_trend": true
+      },
+      {
+        "id": "ets_ana_7",
+        "family": "locally_fitted_statistical",
+        "model": "ETS",
+        "error": "add",
+        "trend": null,
+        "seasonal": "add",
+        "seasonal_periods": 7,
+        "damped_trend": false
+      }
+    ]
+  },
+  "protocol": {
+    "protocol_version": "1.0",
+    "status": "core_design_locked",
+    "review_date": "2026-09-17",
+    "seed": 42,
+    "pilot_manifest": "results/metrics/pilot_manifest.csv",
+    "horizons_days": [
+      7,
+      14,
+      28
+    ],
+    "backtest": "rolling_origin_fixed_history",
+    "primary_history_days": 365,
+    "history_sensitivity_days": [
+      90,
+      180,
+      365
+    ],
+    "validation_origins": [
+      "2015-11-08",
+      "2015-12-06",
+      "2016-01-03"
+    ],
+    "test_origins": [
+      "2016-01-31",
+      "2016-02-28",
+      "2016-03-27",
+      "2016-04-24"
+    ],
+    "freeze_all_model_choices_before_test": true,
+    "allow_scheduled_refit_with_past_actuals": true,
+    "primary_scenario": "univariate",
+    "secondary_scenario": "business_features",
+    "unequal_information_label": "realistic_deployment",
+    "accuracy_metrics": [
+      "MAE",
+      "WAPE",
+      "RMSSE"
+    ],
+    "reliability": {
+      "across_series": [
+        "median",
+        "p90",
+        "p95",
+        "standard_deviation",
+        "IQR",
+        "maximum"
+      ],
+      "series_aggregation": "mean_over_all_scheduled_origins_require_complete_scores",
+      "quantile_interpolation": "linear",
+      "report_origin_distributions": true,
+      "report_win_rate": true,
+      "report_failures": true
+    },
+    "practicality": [
+      "runtime",
+      "memory",
+      "hardware",
+      "setup_effort"
+    ],
+    "pilot_profile_days": 730,
+    "cold_starts_included": false,
+    "model_implementation_started": true,
+    "execution_details_pending": [
+      "checkpoints",
+      "search_spaces",
+      "tuning_budgets",
+      "timeouts",
+      "optional_seasonality"
+    ],
+    "model_families": {
+      "naive_reference_baselines": {
+        "models": [
+          "last_value",
+          "weekly_seasonal_naive"
+        ],
+        "definition": "Reference forecasting rules, reported separately from fitted families."
+      },
+      "locally_fitted_statistical": {
+        "models": [
+          "ARIMA",
+          "ETS"
+        ],
+        "fit_scope": "per_series"
+      },
+      "locally_trained_machine_learning": {
+        "models": [
+          "XGBoost"
+        ],
+        "fit_scope": "pooled_global_across_pilot_series"
+      },
+      "pretrained_time_series_foundation": {
+        "models": [
+          "Chronos-2",
+          "TimesFM",
+          "Moirai"
+        ],
+        "initial_mode": "zero_shot_frozen_checkpoint"
+      },
+      "local_definition": "Fitted/trained on the permitted local dataset; does not imply per-series fitting or local hardware."
+    },
+    "validation_model_selection": {
+      "primary_metric": "RMSSE",
+      "direction": "minimize",
+      "within_horizon_aggregation": "macro_mean_over_eligible_validation_series_origin_cases",
+      "across_horizon_aggregation": "equal_weighted_mean",
+      "horizon_weights": {
+        "7": 0.3333333333333333,
+        "14": 0.3333333333333333,
+        "28": 0.3333333333333333
+      },
+      "tie_break_metric": "MAE",
+      "fallback_if_all_rmsse_undefined": "MAE",
+      "mae_uses_same_aggregation": true,
+      "redistribute_missing_horizon_weights": false,
+      "selection_scope": "separately_per_history_length_and_scenario",
+      "selection_data": "validation_only"
+    }
+  },
+  "actual_origins": [
+    "2015-11-08",
+    "2015-12-06",
+    "2016-01-03"
+  ],
+  "series_count": 200,
+  "workers": 4,
+  "scheduled_tasks": 4800,
+  "files_sha256": {
+    "configs/evaluation.json": "dba9400db2662b96748fc6e0c5bb1270f9ff1baeed65d1373d6bed9832a672c4",
+    "configs/stage4.json": "8c3cf6e0c47441faaa3121c1ec998a7c7a8b897d09425ced6400377f37750f9a",
+    "docs/evaluation_protocol.md": "8347acd3451176f270d7bffb9be065364a9fb1629d981a0fa353d3b524b8c1a8",
+    "requirements.txt": "99fc6a07ca5d63b6f6467b5534bc2f7f46a9481ef67aaaf34823d3017634217f",
+    "results/metrics/pilot_manifest.csv": "1bf0469c26238b4a31e8e9b537c71cb1353e44d4aa65c58e3958c4fcd0553eb9",
+    "data/processed/pilot_daily.csv.gz": "e259ee0819855b647bf584ee073e3e03a9a8e3e1edf81951d30b45d11c031b64",
+    "src/models/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/models/statistical.py": "28c5c230a91793b5f749fbadf7f338644a2da02ba2344277d77296f9c8165624",
+    "src/evaluation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/evaluation/metrics.py": "8c92529a5b8ef0b48ed31558387f52163b2db7aea5a0a4e61d633a8110d54146",
+    "src/evaluation/stage4.py": "411d781f2636779e8b5d37b8b0b2268799f049f9ad708ee31f451c4a101d8bcf",
+    "src/evaluation/windows.py": "3aaa5fa5293cb841918c114a20aa7a27535db9b1c764af8b25328181e892105e"
+  },
+  "git_revision": "2919c75345a7bc93dd9b46302912a09611d56b78",
+  "source_hashes_capture_uncommitted_changes": true,
+  "python": "3.12.14",
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "machine": "arm64",
+  "logical_cpus": 8,
+  "host_ram_bytes": 8589934592,
+  "hardware": "CPU only",
+  "blas_threads_per_worker": 1,
+  "packages": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scipy": "1.18.1",
+    "statsmodels": "0.15.0",
+    "psutil": "7.2.2"
+  },
+  "memory_measurement": "10ms sampled RSS per worker job, includes worker runtime; can miss brief peaks; not aggregate host peak",
+  "timeout_measurement": "POSIX interval timer; delivery may wait for native code to return",
+  "setup_download_seconds": null,
+  "gpu_memory_bytes": null,
+  "elapsed_wall_seconds": 24.044277541001065,
+  "forecast_rows": 235200,
+  "failed_tasks": 3,
+  "final_test_evaluated": false
+}

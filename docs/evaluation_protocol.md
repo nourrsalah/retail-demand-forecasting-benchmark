@@ -1,6 +1,6 @@
 # Shared evaluation protocol — v1.0
 
-**Status: core evaluation design locked following user review on 2026-09-17. No models have been fitted.**
+**Status: core evaluation design locked following user review on 2026-09-17. Stage 4 implementation and validation began on 2026-09-23; final tests remain unevaluated.**
 
 Machine-readable decisions: `configs/evaluation.json`. Model-specific checkpoints, search spaces, and resource limits must still be recorded and frozen using validation only before any final-test run.
 
@@ -109,7 +109,7 @@ Metric columns: matching run/model/scenario/series/origin/horizon identifiers, `
 
 The reviewed core design is locked: horizons 7/14/28; seven chronological rolling origins; primary 365-day history; later 90/180/365 sensitivity; MAE/WAPE/RMSSE; median/tail errors, win rates and failures; runtime/memory/hardware/setup effort; and separate covariate experiments. The pilot remains 200 series across all stores/states/categories, selected from the first 730 days, excluding cold starts.
 
-No model implementation is included in this update. Remaining execution details (specific checkpoints, model search spaces, exact budgets/timeouts, and optional exploratory seasonality) must be finalized and logged using validation only before final-test access. These details cannot alter the locked core design without a versioned amendment. Any later protocol changes require a new version and rationale; test-informed changes require fresh holdouts or explicit exploratory labeling.
+Stage 4 statistical execution details are now recorded in `configs/stage4.json` and `docs/stage4.md`, under the unchanged core protocol. Remaining execution details (specific checkpoints, model search spaces, exact budgets/timeouts, and optional exploratory seasonality) must be finalized and logged using validation only before final-test access. These details cannot alter the locked core design without a versioned amendment. Any later protocol changes require a new version and rationale; test-informed changes require fresh holdouts or explicit exploratory labeling.
 
 ### v1.0 review changes
 

@@ -1,0 +1,54 @@
+{
+  "run_id": "20260923T141847468792Z-stage4-smoke",
+  "status": "smoke_only_not_selected",
+  "scenario": "univariate",
+  "history_days": 365,
+  "selected_candidates": {
+    "ARIMA": "arima_100",
+    "ETS": "ets_ana_7",
+    "last_value": "last_value",
+    "weekly_seasonal_naive": "weekly_seasonal_naive"
+  },
+  "candidate_specs": {
+    "ARIMA": {
+      "id": "arima_100",
+      "family": "locally_fitted_statistical",
+      "model": "ARIMA",
+      "order": [
+        1,
+        0,
+        0
+      ],
+      "seasonal_order": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trend": "c"
+    },
+    "ETS": {
+      "id": "ets_ana_7",
+      "family": "locally_fitted_statistical",
+      "model": "ETS",
+      "error": "add",
+      "trend": null,
+      "seasonal": "add",
+      "seasonal_periods": 7,
+      "damped_trend": false
+    },
+    "last_value": {
+      "id": "last_value",
+      "family": "naive_reference_baselines",
+      "model": "last_value"
+    },
+    "weekly_seasonal_naive": {
+      "id": "weekly_seasonal_naive",
+      "family": "naive_reference_baselines",
+      "model": "weekly_seasonal_naive"
+    }
+  },
+  "selection_config_sha256": "8c3cf6e0c47441faaa3121c1ec998a7c7a8b897d09425ced6400377f37750f9a",
+  "protocol_sha256": "68568b4561c3fd667e4efab94f3c88865047053d3201e73553d8105116845520",
+  "test_evaluated": false
+}
