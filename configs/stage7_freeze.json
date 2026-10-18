@@ -1,0 +1,343 @@
+{
+  "status": "frozen_before_final_test",
+  "created_utc": "2026-10-11T19:30:18.441043+00:00",
+  "selections": {
+    "univariate_90": {
+      "ARIMA": "arima_011",
+      "Chronos-2": "chronos2",
+      "ETS": "ets_ann",
+      "Moirai": "moirai11small",
+      "TimesFM": "timesfm25",
+      "XGBoost": "xgb_depth3_rounds300",
+      "last_value": "last_value",
+      "weekly_seasonal_naive": "weekly_seasonal_naive"
+    },
+    "univariate_180": {
+      "ARIMA": "arima_011",
+      "Chronos-2": "chronos2",
+      "ETS": "ets_ann",
+      "Moirai": "moirai11small",
+      "TimesFM": "timesfm25",
+      "XGBoost": "xgb_depth3_rounds300",
+      "last_value": "last_value",
+      "weekly_seasonal_naive": "weekly_seasonal_naive"
+    },
+    "business_features_365": {
+      "XGBoost": "xgb_depth6_rounds200"
+    },
+    "univariate_365": {
+      "ARIMA": "arima_011",
+      "ETS": "ets_ann",
+      "last_value": "last_value",
+      "weekly_seasonal_naive": "weekly_seasonal_naive",
+      "XGBoost": "xgb_depth3_rounds300",
+      "Chronos-2": "chronos2",
+      "TimesFM": "timesfm25",
+      "Moirai": "moirai11small"
+    }
+  },
+  "source_sha256": {
+    "src/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/data/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/data/pipeline.py": "323fa35f6e916a170eaf2ed15feccba8cf1c36addc1d3a1cc95f5d30f250cf82",
+    "src/evaluation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/evaluation/benchmark.py": "1589027820ad2e7099d39ea69b2c57642fb94181cecacf90b8dc8b53aa8b82b7",
+    "src/evaluation/foundation_worker.py": "cd9df8f4f0165b340ecc97d8f0295e5a888ab83f348c3f2c126d2c72ee60ae73",
+    "src/evaluation/metrics.py": "8c92529a5b8ef0b48ed31558387f52163b2db7aea5a0a4e61d633a8110d54146",
+    "src/evaluation/report_benchmark.py": "a84f46da3397b685afddf28b20d4904d775cef0b28403adc43e7b5750df3d06e",
+    "src/evaluation/report_stage4.py": "c2ac99cd8186a15315d82df4c99d85f621750fb5370b78e9c468f43ee94e799d",
+    "src/evaluation/report_stage5.py": "dd7d3d807b4d7c697ca628b86626aa048c1c2af4a77e351a3d6248730b43148b",
+    "src/evaluation/report_stage6.py": "fe373755d5ec6fad9c68aa24736d423fa30619c49b2188886280a29dab80ad73",
+    "src/evaluation/stage4.py": "411d781f2636779e8b5d37b8b0b2268799f049f9ad708ee31f451c4a101d8bcf",
+    "src/evaluation/stage5.py": "cf23c71b992c955321f83d04a28ba379b22b80267e08055680c5eafe1e984b12",
+    "src/evaluation/stage6.py": "3074b7f778ccff5d1aad7dfd7e2d85e845b1ea645aa0f03a4781a1c466de4ea3",
+    "src/evaluation/stage7.py": "edbdfbc2f5a615a7383bf8eebda94ef8230e76e13a8fd2fbf3deee611d500b8e",
+    "src/evaluation/windows.py": "3aaa5fa5293cb841918c114a20aa7a27535db9b1c764af8b25328181e892105e",
+    "src/models/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/models/business_xgboost.py": "86a96476f0b34254732c86479c8723bcc2c833f5f3db4c423521c9d243c67c10",
+    "src/models/foundation.py": "e5dc2407762a3352991b577ee0886dcd078ea25cdc43152f600f07eeb4456411",
+    "src/models/statistical.py": "28c5c230a91793b5f749fbadf7f338644a2da02ba2344277d77296f9c8165624",
+    "src/models/xgboost_model.py": "5d146f265b2ab8408a498032b13a74d6842aa998734113d71b3210d862e020c6",
+    "src/utils/prepare_stage6.py": "e2293bd723483a640d531b7ad70cd1f838de9490e099f2c8994007e7f104b199",
+    "configs/evaluation.json": "dba9400db2662b96748fc6e0c5bb1270f9ff1baeed65d1373d6bed9832a672c4",
+    "configs/stage4.json": "8c3cf6e0c47441faaa3121c1ec998a7c7a8b897d09425ced6400377f37750f9a",
+    "configs/stage5.json": "259e17253fd7a06331f0f38e173be4aa33015da241ad97bd6b55cfcae84e01a1",
+    "configs/stage6.json": "fbf2588b4e648e001a3de8125e23331dd07ea4f644bb3ee6d5dab30364662587",
+    "configs/stage6_checkpoints.json": "8a36d30e49fefd6cfe34a574b80b38504baeb72e0ec312ea25d130523f74a3a2",
+    "configs/stage7_experiments.json": "a084c2f3ef367f26e8c08243f451788130debd407ff76533e019e3a85d47c169",
+    "requirements.txt": "15edd01827cc7e0e85b29b6863feb3ee70a1b5ecd476eaae3b5ab29a2c339e14",
+    "requirements/stage6.lock.txt": "88f3338433de99f55d663173db49af587065a04c8da67678e14d64488a1b4dcb",
+    "docs/evaluation_protocol.md": "8347acd3451176f270d7bffb9be065364a9fb1629d981a0fa353d3b524b8c1a8",
+    "docs/stage7_design.md": "8ab278022c9d369bee82342b941a9cce9ad19d2a2ca4bf55e3c68469fdd64d6b",
+    "results/metrics/pilot_manifest.csv": "1bf0469c26238b4a31e8e9b537c71cb1353e44d4aa65c58e3958c4fcd0553eb9",
+    "data/processed/pilot_daily.csv.gz": "e259ee0819855b647bf584ee073e3e03a9a8e3e1edf81951d30b45d11c031b64"
+  },
+  "validation_artifacts_sha256": {
+    "results/metrics/20261011T191913098188Z-stage7-validation-univariate-90/run.json": "fd1c788099e234a761fd01fdc90ca35bfebefc8da2355a97c2fe7778446006fd",
+    "results/metrics/20261011T191913098188Z-stage7-validation-univariate-90/selected_models.json": "a8970fcbf23a225c36143d04865bd6f89ea17d977df8870e537b729206d31e0b",
+    "results/metrics/20261011T191913098188Z-stage7-validation-univariate-90/case_scores.csv": "e0f0e6a3dac866f1590ac179300487a437220f59c1ceb998b0eb8ee55c36096c",
+    "results/metrics/20261011T191913098188Z-stage7-validation-univariate-90/candidate_selection.csv": "f6b1af458b26bbf2cdf597ebcaf4301436f0e95b3a21fa17dd8866a3bd446fab",
+    "results/metrics/20261011T192333667701Z-stage7-validation-univariate-180/run.json": "9b9a891c8b06e6a38189983cce50739899619be330b9893a7c1ab46bdf1a6ddb",
+    "results/metrics/20261011T192333667701Z-stage7-validation-univariate-180/selected_models.json": "a8970fcbf23a225c36143d04865bd6f89ea17d977df8870e537b729206d31e0b",
+    "results/metrics/20261011T192333667701Z-stage7-validation-univariate-180/case_scores.csv": "7be4233c3a078fe375521d89b96b7eab4c5a036849b4a3eb196c2d7b6ae62301",
+    "results/metrics/20261011T192333667701Z-stage7-validation-univariate-180/candidate_selection.csv": "5a8606b95bd0f74993a62245c7daf94d389c07e831741f8f91fe618659a111c3",
+    "results/metrics/20261011T192948946699Z-stage7-validation-business_features-365/run.json": "130fec4795e8440c3becb0d2b2b9c8aa982b97ebd31148dbf6d4e5f017c88eaa",
+    "results/metrics/20261011T192948946699Z-stage7-validation-business_features-365/selected_models.json": "e710380b826f99ee7edeaa6ee8b9ae360a9ba3771bf081223836a20fa1e77425",
+    "results/metrics/20261011T192948946699Z-stage7-validation-business_features-365/case_scores.csv": "9bbcbfd3a909c505494d329218fc2bf9dfde659c7277d1f4cf01e009af356431",
+    "results/metrics/20261011T192948946699Z-stage7-validation-business_features-365/candidate_selection.csv": "4541cb58aae03685f05d0b6b2760c50136584d726bc7fe8dae227dda1af1ca40",
+    "results/metrics/20260923T142001461574Z-stage4-validation/run.json": "49609ca30d3d0837a293a6eb45940c2346bd9ba6503f6ade72c905d892f5c827",
+    "results/metrics/20260923T142001461574Z-stage4-validation/selected_models.json": "f2b7d067db79774b2502a3f23ac09dcfc32d0a0d0ced269ba6db9549b64e6a78",
+    "results/metrics/20260923T142001461574Z-stage4-validation/case_scores.csv": "1041eb88492f77b10620edb85ddb04b26bd2e775b089dba01cc726278cc2d15e",
+    "results/metrics/20260923T161927565554Z-stage5-validation/run.json": "954768f15f7af894826c84be329f646d9bf94f1c880c889fde4b865090f450d8",
+    "results/metrics/20260923T161927565554Z-stage5-validation/selected_models.json": "fee821ab6d952051ae518c37b8a4b35c4b1f9c2ed1568c2f293598bcf620b0ee",
+    "results/metrics/20260923T161927565554Z-stage5-validation/case_scores.csv": "c09407d7542db358e8afd1d222cd498b8b5f442c94709bf4ea88af648390b1ce",
+    "results/metrics/20261006T004217634146Z-stage6-validation/run.json": "d0d75a13bd2a89e0257637c5c2abd6363dc1b39eb6a509ded50935278857c34f",
+    "results/metrics/20261006T004217634146Z-stage6-validation/selected_models.json": "d880f1f5a5edf93bdf12c651b718160369f99ec0c4f2cb22d7f8f087522bf321",
+    "results/metrics/20261006T004217634146Z-stage6-validation/case_scores.csv": "3ca7c4b212e02712f1380fe30e9dbd877ba1f43e45182bc04727213dced9fd3b"
+  },
+  "experiment_design": {
+    "histories": [
+      90,
+      180,
+      365
+    ],
+    "horizons": [
+      7,
+      14,
+      28
+    ],
+    "seed": 42,
+    "primary_scenario": "univariate",
+    "business_feature_scenario": {
+      "name": "business_features",
+      "histories": [
+        365
+      ],
+      "models": [
+        "XGBoost"
+      ],
+      "comparison": "within_XGBoost_against_sales_only_same_history_and_targets",
+      "features": [
+        "sales_lags_and_rolling_statistics",
+        "day_of_week_sin_cos",
+        "day_of_year_sin_cos",
+        "scheduled_event_indicator",
+        "scheduled_state_SNAP",
+        "previous_observed_sell_price",
+        "previous_price_missing"
+      ],
+      "future_calendar_assumption": "calendar_events_and_SNAP_schedule_known_at_origin",
+      "price_policy": "training_uses_previous_available_price_within_history; future_uses_last_price_known_at_origin; no_realized_future_prices",
+      "other_models": "not_implemented_for_this_covariate_track; this_is_not_a_claim_of_model_incapability",
+      "shorter_history_business_features": "outside_this_secondary_experiment"
+    },
+    "foundation_history_policy": "exact_observed_history_with_model_internal_masked_padding_only",
+    "foundation_checkpoints": "configs/stage6_checkpoints.json",
+    "search_spaces": {
+      "statistical": "configs/stage4.json",
+      "xgboost": "configs/stage5.json",
+      "foundation": "configs/stage6.json"
+    },
+    "validation_budget": "same_prespecified_candidates_per_family_at_every_history_and_scenario; no_extra_accuracy_driven_search",
+    "optional_weekly_seasonality_flag": "not_used; retain_original_frozen_pilot_segments",
+    "test_policy": "all_selections_and_source_hashes_frozen_before_any_test_predictions; no_tuning_after_test",
+    "bootstrap_replicates": 2000,
+    "workers_statistical": 4,
+    "timesfm_context_allocation": "ceil(observed_history/32)*32; 96/192/384; avoid fully masked leading patches"
+  },
+  "protocol": {
+    "protocol_version": "1.0",
+    "status": "core_design_locked",
+    "review_date": "2026-09-17",
+    "seed": 42,
+    "pilot_manifest": "results/metrics/pilot_manifest.csv",
+    "horizons_days": [
+      7,
+      14,
+      28
+    ],
+    "backtest": "rolling_origin_fixed_history",
+    "primary_history_days": 365,
+    "history_sensitivity_days": [
+      90,
+      180,
+      365
+    ],
+    "validation_origins": [
+      "2015-11-08",
+      "2015-12-06",
+      "2016-01-03"
+    ],
+    "test_origins": [
+      "2016-01-31",
+      "2016-02-28",
+      "2016-03-27",
+      "2016-04-24"
+    ],
+    "freeze_all_model_choices_before_test": true,
+    "allow_scheduled_refit_with_past_actuals": true,
+    "primary_scenario": "univariate",
+    "secondary_scenario": "business_features",
+    "unequal_information_label": "realistic_deployment",
+    "accuracy_metrics": [
+      "MAE",
+      "WAPE",
+      "RMSSE"
+    ],
+    "reliability": {
+      "across_series": [
+        "median",
+        "p90",
+        "p95",
+        "standard_deviation",
+        "IQR",
+        "maximum"
+      ],
+      "series_aggregation": "mean_over_all_scheduled_origins_require_complete_scores",
+      "quantile_interpolation": "linear",
+      "report_origin_distributions": true,
+      "report_win_rate": true,
+      "report_failures": true
+    },
+    "practicality": [
+      "runtime",
+      "memory",
+      "hardware",
+      "setup_effort"
+    ],
+    "pilot_profile_days": 730,
+    "cold_starts_included": false,
+    "model_implementation_started": true,
+    "execution_details_pending": [
+      "checkpoints",
+      "search_spaces",
+      "tuning_budgets",
+      "timeouts",
+      "optional_seasonality"
+    ],
+    "model_families": {
+      "naive_reference_baselines": {
+        "models": [
+          "last_value",
+          "weekly_seasonal_naive"
+        ],
+        "definition": "Reference forecasting rules, reported separately from fitted families."
+      },
+      "locally_fitted_statistical": {
+        "models": [
+          "ARIMA",
+          "ETS"
+        ],
+        "fit_scope": "per_series"
+      },
+      "locally_trained_machine_learning": {
+        "models": [
+          "XGBoost"
+        ],
+        "fit_scope": "pooled_global_across_pilot_series"
+      },
+      "pretrained_time_series_foundation": {
+        "models": [
+          "Chronos-2",
+          "TimesFM",
+          "Moirai"
+        ],
+        "initial_mode": "zero_shot_frozen_checkpoint"
+      },
+      "local_definition": "Fitted/trained on the permitted local dataset; does not imply per-series fitting or local hardware."
+    },
+    "validation_model_selection": {
+      "primary_metric": "RMSSE",
+      "direction": "minimize",
+      "within_horizon_aggregation": "macro_mean_over_eligible_validation_series_origin_cases",
+      "across_horizon_aggregation": "equal_weighted_mean",
+      "horizon_weights": {
+        "7": 0.3333333333333333,
+        "14": 0.3333333333333333,
+        "28": 0.3333333333333333
+      },
+      "tie_break_metric": "MAE",
+      "fallback_if_all_rmsse_undefined": "MAE",
+      "mae_uses_same_aggregation": true,
+      "redistribute_missing_horizon_weights": false,
+      "selection_scope": "separately_per_history_length_and_scenario",
+      "selection_data": "validation_only"
+    }
+  },
+  "checkpoint_lock": {
+    "models": {
+      "chronos2": {
+        "repo_id": "amazon/chronos-2",
+        "revision": "29ec3766d36d6f73f0696f85560a422f50e8498c",
+        "files": {
+          "README.md": {
+            "size": 7773,
+            "expected_sha256": null,
+            "sha256": "c7b29bc88f5bc3ebc6e7213b6353be80090d671fefa4aa74ed20498838c16558"
+          },
+          "config.json": {
+            "size": 1067,
+            "expected_sha256": null,
+            "sha256": "ef1143bfdc9c0376d9a056eefca46cb4b1ec3d0ffacd541ff56feb40fb708031"
+          },
+          "model.safetensors": {
+            "size": 477930472,
+            "expected_sha256": "ddcda3c7508bf2528087723e98a20707cc04b7f370ae275a9fd88078ddba4f42",
+            "sha256": "ddcda3c7508bf2528087723e98a20707cc04b7f370ae275a9fd88078ddba4f42"
+          }
+        },
+        "snapshot_path": ".cache/huggingface/hub/models--amazon--chronos-2/snapshots/29ec3766d36d6f73f0696f85560a422f50e8498c",
+        "download_seconds": 201.1341201660107
+      },
+      "timesfm25": {
+        "repo_id": "google/timesfm-2.5-200m-pytorch",
+        "revision": "1d952420fba87f3c6dee4f240de0f1a0fbc790e3",
+        "files": {
+          "README.md": {
+            "size": 2496,
+            "expected_sha256": null,
+            "sha256": "4c3f16633a3d8b9324904bf004429aced2ee009b84e64effb59a902520cc7f2e"
+          },
+          "config.json": {
+            "size": 475,
+            "expected_sha256": null,
+            "sha256": "cd3315b760d5cc7e278d7afdf41b897031ced888fc6c115bd9b3ac0ea2c47408"
+          },
+          "model.safetensors": {
+            "size": 925181104,
+            "expected_sha256": "2f776efe6245e42b24bc4153ffdf61810140210e4bd3b01fb21f7aa779ab6ce8",
+            "sha256": "2f776efe6245e42b24bc4153ffdf61810140210e4bd3b01fb21f7aa779ab6ce8"
+          }
+        },
+        "snapshot_path": ".cache/huggingface/hub/models--google--timesfm-2.5-200m-pytorch/snapshots/1d952420fba87f3c6dee4f240de0f1a0fbc790e3",
+        "download_seconds": 358.66838966700016
+      },
+      "moirai11small": {
+        "repo_id": "Salesforce/moirai-1.1-R-small",
+        "revision": "0c24ab99db2c1a70ea2a0fc03bf113329772ac64",
+        "files": {
+          "README.md": {
+            "size": 1185,
+            "expected_sha256": null,
+            "sha256": "6af4bdf28250daca3766ec8a69af6218593391f8f7b32410f2841039d230f2a9"
+          },
+          "config.json": {
+            "size": 682,
+            "expected_sha256": null,
+            "sha256": "37b9eca5a0c3e58c2cdac3ecdbf897acbd009a20d6ba0f8a2ae0e8d92002fd47"
+          },
+          "model.safetensors": {
+            "size": 55320200,
+            "expected_sha256": "cc46831272ea07e99d78fe05c09e730c7c76a1b272cddbdaf5173dae371cb238",
+            "sha256": "cc46831272ea07e99d78fe05c09e730c7c76a1b272cddbdaf5173dae371cb238"
+          }
+        },
+        "snapshot_path": ".cache/huggingface/hub/models--Salesforce--moirai-1.1-R-small/snapshots/0c24ab99db2c1a70ea2a0fc03bf113329772ac64",
+        "download_seconds": 25.174494917009724
+      }
+    }
+  },
+  "auxiliary_analysis_sha256": {
+    "analysis/stage7_history.py": "407808382c9ab5cd5173221c01659f452487236b502764eb969becd4c01f6456"
+  }
+}

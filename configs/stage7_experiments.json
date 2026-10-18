@@ -1,0 +1,50 @@
+{
+  "histories": [
+    90,
+    180,
+    365
+  ],
+  "horizons": [
+    7,
+    14,
+    28
+  ],
+  "seed": 42,
+  "primary_scenario": "univariate",
+  "business_feature_scenario": {
+    "name": "business_features",
+    "histories": [
+      365
+    ],
+    "models": [
+      "XGBoost"
+    ],
+    "comparison": "within_XGBoost_against_sales_only_same_history_and_targets",
+    "features": [
+      "sales_lags_and_rolling_statistics",
+      "day_of_week_sin_cos",
+      "day_of_year_sin_cos",
+      "scheduled_event_indicator",
+      "scheduled_state_SNAP",
+      "previous_observed_sell_price",
+      "previous_price_missing"
+    ],
+    "future_calendar_assumption": "calendar_events_and_SNAP_schedule_known_at_origin",
+    "price_policy": "training_uses_previous_available_price_within_history; future_uses_last_price_known_at_origin; no_realized_future_prices",
+    "other_models": "not_implemented_for_this_covariate_track; this_is_not_a_claim_of_model_incapability",
+    "shorter_history_business_features": "outside_this_secondary_experiment"
+  },
+  "foundation_history_policy": "exact_observed_history_with_model_internal_masked_padding_only",
+  "foundation_checkpoints": "configs/stage6_checkpoints.json",
+  "search_spaces": {
+    "statistical": "configs/stage4.json",
+    "xgboost": "configs/stage5.json",
+    "foundation": "configs/stage6.json"
+  },
+  "validation_budget": "same_prespecified_candidates_per_family_at_every_history_and_scenario; no_extra_accuracy_driven_search",
+  "optional_weekly_seasonality_flag": "not_used; retain_original_frozen_pilot_segments",
+  "test_policy": "all_selections_and_source_hashes_frozen_before_any_test_predictions; no_tuning_after_test",
+  "bootstrap_replicates": 2000,
+  "workers_statistical": 4,
+  "timesfm_context_allocation": "ceil(observed_history/32)*32; 96/192/384; avoid fully masked leading patches"
+}

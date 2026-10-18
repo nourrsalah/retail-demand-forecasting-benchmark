@@ -1,0 +1,24 @@
+{
+  "stage": 7,
+  "split": "validation",
+  "scenario": "univariate",
+  "history_days": 365,
+  "execution": "verify_and_rescore_completed_model_runs_no_refit",
+  "source_runs": {
+    "4": "20260923T142001461574Z-stage4-validation",
+    "5": "20260923T161927565554Z-stage5-validation",
+    "6": "20261006T004217634146Z-stage6-validation"
+  },
+  "bootstrap": {
+    "seed": 42,
+    "replicates": 2000,
+    "confidence_level": 0.95,
+    "unit": "series",
+    "retain_all_origins_and_horizons": true,
+    "support": "complete_series_common_to_all_models_in_track",
+    "interval": "percentile",
+    "comparisons": "all_pairs_prespecified_no_multiple_comparison_correction"
+  },
+  "comparison_tracks": ["native_estimators", "mean_only"],
+  "final_test_evaluated": false
+}
