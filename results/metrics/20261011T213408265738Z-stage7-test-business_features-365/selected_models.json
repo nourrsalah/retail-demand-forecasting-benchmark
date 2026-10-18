@@ -1,0 +1,7 @@
+{
+  "selected_candidates": {
+    "XGBoost": "xgb_depth6_rounds200"
+  },
+  "selection_data": "validation_only",
+  "test_tuning": false
+}

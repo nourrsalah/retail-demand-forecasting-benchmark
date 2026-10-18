@@ -1,0 +1,2 @@
+candidate,point_estimator,mean_comparison_eligible,selection_score,mae_tie_break,selection
+moirai11small,sample_mean_200,True,0.598566915658948,0.7335691239152636,one prespecified checkpoint; no validation search

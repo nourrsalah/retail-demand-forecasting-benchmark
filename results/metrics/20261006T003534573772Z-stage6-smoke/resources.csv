@@ -1,0 +1,2 @@
+candidate,forecast_origin,status,error,fit_seconds,load_seconds,inference_seconds,warm_inference_median_seconds,warm_inference_range_seconds,negative_raw_count,sampled_peak_rss_bytes,worker_wall_seconds,affected_series_failures
+chronos2,2015-11-08,ok,,0.0,1.9921513750014128,0.5827770000032615,0.0647422909969464,0.004857832987909205,2,827195392,4.958911541005364,0

@@ -1,0 +1,35 @@
+{
+  "freeze_sha256": "57324046c857e2c12545edc6854b11c09c9a30da232919834f955297764f57e0",
+  "source_artifacts_sha256": {
+    "results/metrics/20261011T210829874778Z-stage7-test-univariate-365/run.json": "39d667958bd07611e1deacd4928eaea49820e6f115d837697fcf2df4997ae9db",
+    "results/metrics/20261011T210829874778Z-stage7-test-univariate-365/case_scores.csv": "f1936d4c5fde0936f15912cc7aec48d4ef53d67e14e5eb46d2efdb32ed266649",
+    "results/metrics/20261011T210829874778Z-stage7-test-univariate-365/resources.csv": "4799322f08b7e3901c60d2dcaec2363aa04fa0c33bd6098ad4fc39655e80ec9f",
+    "results/forecasts/20261011T210829874778Z-stage7-test-univariate-365/forecasts.csv.gz": "77dbc6ceb9436db3ed9ac8655006e65382c79934c996a05dfd741683a2a32092",
+    "results/metrics/20261011T211950614525Z-stage7-test-univariate-90/run.json": "1679e33ecd06f2e465be08f1887b82e0cf417810889562316a5db8746c1515ac",
+    "results/metrics/20261011T211950614525Z-stage7-test-univariate-90/case_scores.csv": "b381c07b680b05f5de8433444023de6f313b249fe4725d47d7724e84b7305357",
+    "results/metrics/20261011T211950614525Z-stage7-test-univariate-90/resources.csv": "a62209bb3d9904c84b39fef75d4b4d7da120c68051607720a7ce113611ea4eed",
+    "results/forecasts/20261011T211950614525Z-stage7-test-univariate-90/forecasts.csv.gz": "797a3d004163fbbabc6c24cdcf431eddd10ad8be38de3b486a1e62b8a9e56433",
+    "results/metrics/20261011T212554866621Z-stage7-test-univariate-180/run.json": "f102d53fa73441fa9f32584805c335b2a45cabaafc36ebefe857fc255647aab6",
+    "results/metrics/20261011T212554866621Z-stage7-test-univariate-180/case_scores.csv": "de94745d2d55ab25bdba69f2770a70127100800b1a1709bbb86575b7c896b9ff",
+    "results/metrics/20261011T212554866621Z-stage7-test-univariate-180/resources.csv": "92c0df7aeeb79b010de0e0b02cd18b85c25f984586b5ad673eb8b035acc49457",
+    "results/forecasts/20261011T212554866621Z-stage7-test-univariate-180/forecasts.csv.gz": "e5fc54173fd9a872ca6cd49277e9bbdea7706671e7074ca70a860cfdff12ab9f",
+    "results/metrics/20261011T213408265738Z-stage7-test-business_features-365/run.json": "6d92981352d33609b07c447f827836e7fa01be42a94f8f85d58f164f7f9ce25d",
+    "results/metrics/20261011T213408265738Z-stage7-test-business_features-365/case_scores.csv": "b81af8849a75c8aaa96f4795b3672740c45d28b3593f84866b9eea06a3cbb31a",
+    "results/metrics/20261011T213408265738Z-stage7-test-business_features-365/resources.csv": "cddfb2a2cd33eabdfa3e9e37780c490be772d4012886508e0d7f530ff663ff6d",
+    "results/forecasts/20261011T213408265738Z-stage7-test-business_features-365/forecasts.csv.gz": "56c9cfb9637115872a206b65ea119caaf20e24cce004444f1ca7d0cc565b5363"
+  },
+  "report_source_sha256": "a84f46da3397b685afddf28b20d4904d775cef0b28403adc43e7b5750df3d06e",
+  "test_conditions": {
+    "univariate_365": "results/metrics/20261011T210829874778Z-stage7-test-univariate-365",
+    "univariate_90": "results/metrics/20261011T211950614525Z-stage7-test-univariate-90",
+    "univariate_180": "results/metrics/20261011T212554866621Z-stage7-test-univariate-180",
+    "business_features_365": "results/metrics/20261011T213408265738Z-stage7-test-business_features-365"
+  },
+  "checks_passed": true,
+  "history_analysis_sha256": "407808382c9ab5cd5173221c01659f452487236b502764eb969becd4c01f6456",
+  "history_common_cases_per_horizon": {
+    "7": 780,
+    "14": 780,
+    "28": 780
+  }
+}

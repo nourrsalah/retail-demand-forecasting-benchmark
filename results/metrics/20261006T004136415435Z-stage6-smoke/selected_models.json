@@ -1,0 +1,7 @@
+{
+  "status": "smoke_only",
+  "selected_candidates": {
+    "TimesFM": "timesfm25"
+  },
+  "test_evaluated": false
+}

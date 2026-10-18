@@ -1,0 +1,13 @@
+candidate,horizon,metric,win_rate,n_common_series,excluded_series
+business_xgb_depth6_rounds200,7,RMSSE,0.61,200,0
+xgb_depth3_rounds300,7,RMSSE,0.39,200,0
+business_xgb_depth6_rounds200,7,MAE,0.515,200,0
+xgb_depth3_rounds300,7,MAE,0.485,200,0
+business_xgb_depth6_rounds200,14,RMSSE,0.54,200,0
+xgb_depth3_rounds300,14,RMSSE,0.46,200,0
+business_xgb_depth6_rounds200,14,MAE,0.355,200,0
+xgb_depth3_rounds300,14,MAE,0.645,200,0
+business_xgb_depth6_rounds200,28,RMSSE,0.66,200,0
+xgb_depth3_rounds300,28,RMSSE,0.34,200,0
+business_xgb_depth6_rounds200,28,MAE,0.3,200,0
+xgb_depth3_rounds300,28,MAE,0.7,200,0

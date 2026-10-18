@@ -1,0 +1,7 @@
+{
+  "status": "smoke_only",
+  "selected_candidates": {
+    "Chronos-2": "chronos2"
+  },
+  "test_evaluated": false
+}

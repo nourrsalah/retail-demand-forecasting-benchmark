@@ -1,0 +1,21 @@
+{
+  "unit_tests_passed": 23,
+  "candidate_forecast_rows": 88200,
+  "selected_forecast_rows": 29400,
+  "pooled_jobs": 9,
+  "failed_pooled_jobs": 0,
+  "training_rows_per_fit": 67400,
+  "features": 11,
+  "checks": [
+    "unique standard forecast keys",
+    "equal 7/14/28 selection weights",
+    "identical prefixes from one 28-day rollout",
+    "finite nonnegative scored predictions",
+    "validation-only origins and target dates",
+    "data and manifest hashes match Stage 4",
+    "source/config hashes match run",
+    "locked protocol, Stage 4 source/config, and notebooks unchanged"
+  ],
+  "figures_visually_reviewed": 1,
+  "final_test_evaluated": false
+}

@@ -1,0 +1,9 @@
+{
+  "status": "prespecified_checkpoints",
+  "selected_candidates": {
+    "Chronos-2": "chronos2",
+    "TimesFM": "timesfm25",
+    "Moirai": "moirai11small"
+  },
+  "test_evaluated": false
+}

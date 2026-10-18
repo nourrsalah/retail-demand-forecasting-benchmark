@@ -1,0 +1,33 @@
+Traceback (most recent call last):
+  File "/Users/noursalah/Desktop/retail-forecasting-benchmark/src/evaluation/foundation_worker.py", line 45, in run
+    tic = time.perf_counter(); raw = adapter.predict(histories[i], origin)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/noursalah/Desktop/retail-forecasting-benchmark/src/models/foundation.py", line 78, in predict
+    return validate_prediction(raw, len(x), horizon)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/noursalah/Desktop/retail-forecasting-benchmark/src/models/foundation.py", line 17, in validate_prediction
+    raise ValueError(f'Invalid forecast shape/values: {x.shape}')
+ValueError: Invalid forecast shape/values: (200, 28)
+timesfm25 2015-11-08: failed
+Traceback (most recent call last):
+  File "/Users/noursalah/Desktop/retail-forecasting-benchmark/src/evaluation/foundation_worker.py", line 45, in run
+    tic = time.perf_counter(); raw = adapter.predict(histories[i], origin)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/noursalah/Desktop/retail-forecasting-benchmark/src/models/foundation.py", line 78, in predict
+    return validate_prediction(raw, len(x), horizon)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/noursalah/Desktop/retail-forecasting-benchmark/src/models/foundation.py", line 17, in validate_prediction
+    raise ValueError(f'Invalid forecast shape/values: {x.shape}')
+ValueError: Invalid forecast shape/values: (200, 28)
+timesfm25 2015-12-06: failed
+Traceback (most recent call last):
+  File "/Users/noursalah/Desktop/retail-forecasting-benchmark/src/evaluation/foundation_worker.py", line 45, in run
+    tic = time.perf_counter(); raw = adapter.predict(histories[i], origin)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/noursalah/Desktop/retail-forecasting-benchmark/src/models/foundation.py", line 78, in predict
+    return validate_prediction(raw, len(x), horizon)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/noursalah/Desktop/retail-forecasting-benchmark/src/models/foundation.py", line 17, in validate_prediction
+    raise ValueError(f'Invalid forecast shape/values: {x.shape}')
+ValueError: Invalid forecast shape/values: (200, 28)
+timesfm25 2016-01-03: failed

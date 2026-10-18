@@ -1,0 +1,2 @@
+candidate,forecast_origin,status,error,fit_seconds,load_seconds,inference_seconds,warm_inference_median_seconds,warm_inference_range_seconds,negative_raw_count,sampled_peak_rss_bytes,worker_wall_seconds,affected_series_failures,first_inference_series_per_second
+timesfm25,2015-11-08,ok,,0.0,2.798225957987597,0.38786670900299214,0.1706608749955194,0.00453804200515151,0,1529954304,5.138979625000502,0,7.734615862525229

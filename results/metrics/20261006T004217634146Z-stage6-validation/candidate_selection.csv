@@ -1,0 +1,4 @@
+candidate,point_estimator,mean_comparison_eligible,selection_score,mae_tie_break,selection
+chronos2,native_median,False,0.6701294459122735,0.9602466823721659,one prespecified checkpoint; no validation search
+timesfm25,native_mean,True,0.6497763823207358,1.0298265028765263,one prespecified checkpoint; no validation search
+moirai11small,sample_mean_200,True,0.7034683620148625,1.1289167682419066,one prespecified checkpoint; no validation search

@@ -1,0 +1,6 @@
+model,candidate,job_scope,scheduled_jobs,failed_jobs,fit_seconds_sum,first_inference_seconds_sum,feature_seconds_sum,max_sampled_worker_rss_MiB
+ARIMA,arima_011,per_series,600,1,12.221464605983751,0.5011097840215077,0.0,147.25
+ETS,ets_ann,per_series,600,0,1.8140842430147732,0.2929197980156159,0.0,147.328125
+last_value,last_value,per_series,600,0,0.033918539975269994,0.0120345020077365,0.0,147.09375
+weekly_seasonal_naive,weekly_seasonal_naive,per_series,600,0,0.026090546965858517,0.007619412022904627,0.0,147.09375
+XGBoost,xgb_depth3_rounds300,pooled,3,0,0.9027363749919459,0.0346759579915668,0.0619745830044848,200.671875

@@ -1,0 +1,21 @@
+{
+  "run_id": "20260923T161844957285Z-stage5-smoke",
+  "status": "smoke_only_not_selected",
+  "scenario": "univariate",
+  "history_days": 365,
+  "selected_candidates": {
+    "XGBoost": "xgb_depth3_rounds150"
+  },
+  "candidate_specs": {
+    "XGBoost": {
+      "id": "xgb_depth3_rounds150",
+      "model": "XGBoost",
+      "family": "locally_trained_machine_learning",
+      "max_depth": 3,
+      "num_boost_round": 150
+    }
+  },
+  "selection_config_sha256": "259e17253fd7a06331f0f38e173be4aa33015da241ad97bd6b55cfcae84e01a1",
+  "protocol_sha256": "dba9400db2662b96748fc6e0c5bb1270f9ff1baeed65d1373d6bed9832a672c4",
+  "test_evaluated": false
+}

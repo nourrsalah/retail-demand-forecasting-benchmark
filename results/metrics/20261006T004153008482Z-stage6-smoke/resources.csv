@@ -1,0 +1,2 @@
+candidate,forecast_origin,status,error,fit_seconds,load_seconds,inference_seconds,warm_inference_median_seconds,warm_inference_range_seconds,negative_raw_count,sampled_peak_rss_bytes,worker_wall_seconds,affected_series_failures,first_inference_series_per_second
+moirai11small,2015-11-08,ok,,0.0,3.4528765419963747,0.33571983300498687,0.3042454170063138,0.00025599999935366213,0,608665600,6.0563296659966,0,8.936022555317539

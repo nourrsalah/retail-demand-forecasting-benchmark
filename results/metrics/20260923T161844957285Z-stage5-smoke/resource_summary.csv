@@ -1,0 +1,4 @@
+candidate,scheduled_pooled_jobs,failed_pooled_jobs,fit_seconds_total,inference_seconds_total,elapsed_worker_seconds,peak_sampled_worker_rss_bytes,negative_raw_values,affected_series_failures
+xgb_depth3_rounds150,1,0,0.015042833001643885,0.003095833999395836,0.027360500003851485,162594816,0,0
+xgb_depth3_rounds300,1,0,0.026926457998342812,0.003827249995083548,0.040327167000214104,165281792,0,0
+xgb_depth6_rounds200,1,0,0.05218179099756526,0.004861957997491118,0.07049125000048662,168296448,0,0

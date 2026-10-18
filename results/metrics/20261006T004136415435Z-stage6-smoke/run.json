@@ -1,0 +1,306 @@
+{
+  "run_id": "20261006T004136415435Z-stage6-smoke",
+  "state": "complete",
+  "smoke": true,
+  "split": "validation",
+  "settings": {
+    "stage": 6,
+    "split": "validation",
+    "scenario": "univariate",
+    "history_days": 365,
+    "seed": 42,
+    "device": "cpu",
+    "threads": 4,
+    "batch_size": 4,
+    "workers": 1,
+    "warm_inference_repeats": 3,
+    "worker_timeout_seconds": 1800,
+    "minimum_free_disk_gib": 2,
+    "checkpoint_lock": "configs/stage6_checkpoints.json",
+    "environment_python": ".venv-stage6/bin/python",
+    "models": [
+      {
+        "id": "chronos2",
+        "model": "Chronos-2",
+        "repo_id": "amazon/chronos-2",
+        "point_estimator": "native_median",
+        "mean_comparison_eligible": false,
+        "cross_learning": false,
+        "pretraining_audit_status": "M5_disjointness_not_verified"
+      },
+      {
+        "id": "timesfm25",
+        "model": "TimesFM",
+        "repo_id": "google/timesfm-2.5-200m-pytorch",
+        "point_estimator": "native_mean",
+        "mean_comparison_eligible": true,
+        "max_context": 384,
+        "max_horizon": 128,
+        "normalize_inputs": true,
+        "force_flip_invariance": true,
+        "pretraining_audit_status": "M5_disjointness_not_verified"
+      },
+      {
+        "id": "moirai11small",
+        "model": "Moirai",
+        "repo_id": "Salesforce/moirai-1.1-R-small",
+        "point_estimator": "sample_mean_200",
+        "mean_comparison_eligible": true,
+        "patch_size": 16,
+        "num_samples": 200,
+        "pretraining_audit_status": "published_M5_family_corpus_overlap_checkpoint_lineage_unverified"
+      }
+    ],
+    "stage4_reference_run": "20260923T142001461574Z-stage4-validation",
+    "stage5_reference_run": "20260923T161927565554Z-stage5-validation",
+    "pretraining_overlap": "not_certified_disjoint_from_M5_no_clean_zero_shot_generalization_claim"
+  },
+  "protocol": {
+    "protocol_version": "1.0",
+    "status": "core_design_locked",
+    "review_date": "2026-09-17",
+    "seed": 42,
+    "pilot_manifest": "results/metrics/pilot_manifest.csv",
+    "horizons_days": [
+      7,
+      14,
+      28
+    ],
+    "backtest": "rolling_origin_fixed_history",
+    "primary_history_days": 365,
+    "history_sensitivity_days": [
+      90,
+      180,
+      365
+    ],
+    "validation_origins": [
+      "2015-11-08",
+      "2015-12-06",
+      "2016-01-03"
+    ],
+    "test_origins": [
+      "2016-01-31",
+      "2016-02-28",
+      "2016-03-27",
+      "2016-04-24"
+    ],
+    "freeze_all_model_choices_before_test": true,
+    "allow_scheduled_refit_with_past_actuals": true,
+    "primary_scenario": "univariate",
+    "secondary_scenario": "business_features",
+    "unequal_information_label": "realistic_deployment",
+    "accuracy_metrics": [
+      "MAE",
+      "WAPE",
+      "RMSSE"
+    ],
+    "reliability": {
+      "across_series": [
+        "median",
+        "p90",
+        "p95",
+        "standard_deviation",
+        "IQR",
+        "maximum"
+      ],
+      "series_aggregation": "mean_over_all_scheduled_origins_require_complete_scores",
+      "quantile_interpolation": "linear",
+      "report_origin_distributions": true,
+      "report_win_rate": true,
+      "report_failures": true
+    },
+    "practicality": [
+      "runtime",
+      "memory",
+      "hardware",
+      "setup_effort"
+    ],
+    "pilot_profile_days": 730,
+    "cold_starts_included": false,
+    "model_implementation_started": true,
+    "execution_details_pending": [
+      "checkpoints",
+      "search_spaces",
+      "tuning_budgets",
+      "timeouts",
+      "optional_seasonality"
+    ],
+    "model_families": {
+      "naive_reference_baselines": {
+        "models": [
+          "last_value",
+          "weekly_seasonal_naive"
+        ],
+        "definition": "Reference forecasting rules, reported separately from fitted families."
+      },
+      "locally_fitted_statistical": {
+        "models": [
+          "ARIMA",
+          "ETS"
+        ],
+        "fit_scope": "per_series"
+      },
+      "locally_trained_machine_learning": {
+        "models": [
+          "XGBoost"
+        ],
+        "fit_scope": "pooled_global_across_pilot_series"
+      },
+      "pretrained_time_series_foundation": {
+        "models": [
+          "Chronos-2",
+          "TimesFM",
+          "Moirai"
+        ],
+        "initial_mode": "zero_shot_frozen_checkpoint"
+      },
+      "local_definition": "Fitted/trained on the permitted local dataset; does not imply per-series fitting or local hardware."
+    },
+    "validation_model_selection": {
+      "primary_metric": "RMSSE",
+      "direction": "minimize",
+      "within_horizon_aggregation": "macro_mean_over_eligible_validation_series_origin_cases",
+      "across_horizon_aggregation": "equal_weighted_mean",
+      "horizon_weights": {
+        "7": 0.3333333333333333,
+        "14": 0.3333333333333333,
+        "28": 0.3333333333333333
+      },
+      "tie_break_metric": "MAE",
+      "fallback_if_all_rmsse_undefined": "MAE",
+      "mae_uses_same_aggregation": true,
+      "redistribute_missing_horizon_weights": false,
+      "selection_scope": "separately_per_history_length_and_scenario",
+      "selection_data": "validation_only"
+    }
+  },
+  "checkpoints": {
+    "models": {
+      "chronos2": {
+        "repo_id": "amazon/chronos-2",
+        "revision": "29ec3766d36d6f73f0696f85560a422f50e8498c",
+        "files": {
+          "README.md": {
+            "size": 7773,
+            "expected_sha256": null,
+            "sha256": "c7b29bc88f5bc3ebc6e7213b6353be80090d671fefa4aa74ed20498838c16558"
+          },
+          "config.json": {
+            "size": 1067,
+            "expected_sha256": null,
+            "sha256": "ef1143bfdc9c0376d9a056eefca46cb4b1ec3d0ffacd541ff56feb40fb708031"
+          },
+          "model.safetensors": {
+            "size": 477930472,
+            "expected_sha256": "ddcda3c7508bf2528087723e98a20707cc04b7f370ae275a9fd88078ddba4f42",
+            "sha256": "ddcda3c7508bf2528087723e98a20707cc04b7f370ae275a9fd88078ddba4f42"
+          }
+        },
+        "snapshot_path": ".cache/huggingface/hub/models--amazon--chronos-2/snapshots/29ec3766d36d6f73f0696f85560a422f50e8498c",
+        "download_seconds": 201.1341201660107
+      },
+      "timesfm25": {
+        "repo_id": "google/timesfm-2.5-200m-pytorch",
+        "revision": "1d952420fba87f3c6dee4f240de0f1a0fbc790e3",
+        "files": {
+          "README.md": {
+            "size": 2496,
+            "expected_sha256": null,
+            "sha256": "4c3f16633a3d8b9324904bf004429aced2ee009b84e64effb59a902520cc7f2e"
+          },
+          "config.json": {
+            "size": 475,
+            "expected_sha256": null,
+            "sha256": "cd3315b760d5cc7e278d7afdf41b897031ced888fc6c115bd9b3ac0ea2c47408"
+          },
+          "model.safetensors": {
+            "size": 925181104,
+            "expected_sha256": "2f776efe6245e42b24bc4153ffdf61810140210e4bd3b01fb21f7aa779ab6ce8",
+            "sha256": "2f776efe6245e42b24bc4153ffdf61810140210e4bd3b01fb21f7aa779ab6ce8"
+          }
+        },
+        "snapshot_path": ".cache/huggingface/hub/models--google--timesfm-2.5-200m-pytorch/snapshots/1d952420fba87f3c6dee4f240de0f1a0fbc790e3",
+        "download_seconds": 358.66838966700016
+      },
+      "moirai11small": {
+        "repo_id": "Salesforce/moirai-1.1-R-small",
+        "revision": "0c24ab99db2c1a70ea2a0fc03bf113329772ac64",
+        "files": {
+          "README.md": {
+            "size": 1185,
+            "expected_sha256": null
+          },
+          "config.json": {
+            "size": 682,
+            "expected_sha256": null
+          },
+          "model.safetensors": {
+            "size": 55320200,
+            "expected_sha256": "cc46831272ea07e99d78fe05c09e730c7c76a1b272cddbdaf5173dae371cb238"
+          }
+        }
+      }
+    }
+  },
+  "actual_origins": [
+    "2015-11-08"
+  ],
+  "series_ids": [
+    "FOODS_1_029_WI_1_evaluation",
+    "FOODS_1_063_WI_1_evaluation",
+    "FOODS_1_177_CA_3_evaluation"
+  ],
+  "series_count": 3,
+  "models_run": [
+    "timesfm25"
+  ],
+  "scheduled_series_cases": 3,
+  "files_sha256": {
+    "configs/evaluation.json": "dba9400db2662b96748fc6e0c5bb1270f9ff1baeed65d1373d6bed9832a672c4",
+    "configs/stage6.json": "fbf2588b4e648e001a3de8125e23331dd07ea4f644bb3ee6d5dab30364662587",
+    "configs/stage6_checkpoints.json": "97b224ac5b72b63c1259afb3987cc9a6e8caf85b41cec40d25af00abbea6a1c3",
+    "docs/evaluation_protocol.md": "8347acd3451176f270d7bffb9be065364a9fb1629d981a0fa353d3b524b8c1a8",
+    "docs/stage6.md": "3f4d846717321b828483ff1eed68e3953160a8cd088888c16592fb31946e3f7e",
+    "docs/pretraining_audit.md": "7679ece5e56d3fcfe3799a6cb3c517f1c1f6b44e17e95ae214cf19561fcf065c",
+    "requirements/stage6.lock.txt": "88f3338433de99f55d663173db49af587065a04c8da67678e14d64488a1b4dcb",
+    "results/metrics/pilot_manifest.csv": "1bf0469c26238b4a31e8e9b537c71cb1353e44d4aa65c58e3958c4fcd0553eb9",
+    "data/processed/pilot_daily.csv.gz": "e259ee0819855b647bf584ee073e3e03a9a8e3e1edf81951d30b45d11c031b64",
+    "src/models/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/models/foundation.py": "6037f5ca999d20aa770acdba0aa8a79f300e5d345b8ae54c6a1d0b3e8ea9424a",
+    "src/models/statistical.py": "28c5c230a91793b5f749fbadf7f338644a2da02ba2344277d77296f9c8165624",
+    "src/models/xgboost_model.py": "5d146f265b2ab8408a498032b13a74d6842aa998734113d71b3210d862e020c6",
+    "src/evaluation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/evaluation/foundation_worker.py": "cd9df8f4f0165b340ecc97d8f0295e5a888ab83f348c3f2c126d2c72ee60ae73",
+    "src/evaluation/metrics.py": "8c92529a5b8ef0b48ed31558387f52163b2db7aea5a0a4e61d633a8110d54146",
+    "src/evaluation/report_stage4.py": "c2ac99cd8186a15315d82df4c99d85f621750fb5370b78e9c468f43ee94e799d",
+    "src/evaluation/report_stage5.py": "dd7d3d807b4d7c697ca628b86626aa048c1c2af4a77e351a3d6248730b43148b",
+    "src/evaluation/report_stage6.py": "fe373755d5ec6fad9c68aa24736d423fa30619c49b2188886280a29dab80ad73",
+    "src/evaluation/stage4.py": "411d781f2636779e8b5d37b8b0b2268799f049f9ad708ee31f451c4a101d8bcf",
+    "src/evaluation/stage5.py": "cf23c71b992c955321f83d04a28ba379b22b80267e08055680c5eafe1e984b12",
+    "src/evaluation/stage6.py": "cb4109c438e139f6d1cf9ac1a70a88e1982e527fd58f1a4e4f915c66fdf98afc",
+    "src/evaluation/windows.py": "3aaa5fa5293cb841918c114a20aa7a27535db9b1c764af8b25328181e892105e"
+  },
+  "git_revision": "e6264f148c599db4e8e288567d6fa220869d39bf",
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "python": "3.12.14",
+  "machine": "arm64",
+  "host_ram_bytes": 8589934592,
+  "logical_cpus": 8,
+  "hardware": "CPU only",
+  "precision": "float32",
+  "gpu_memory_bytes": null,
+  "started_utc": "2026-10-06T00:41:36.464923+00:00",
+  "final_test_evaluated": false,
+  "memory_measurement": "10ms sampled worker RSS; shared model peak repeated on origin rows; do not sum",
+  "setup_dependency_seconds": null,
+  "fitting": "none; frozen zero-shot checkpoint",
+  "training_windows": {
+    "2015-11-08": {
+      "start": "2014-11-09",
+      "end": "2015-11-08"
+    }
+  },
+  "elapsed_wall_seconds": 6.102638417010894,
+  "failed_series_cases": 0,
+  "forecast_rows": 147
+}

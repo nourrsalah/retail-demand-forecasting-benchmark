@@ -1,0 +1,8 @@
+{
+  "reference_case_scores_sha256": {
+    "results/metrics/20260923T142001461574Z-stage4-validation": "1041eb88492f77b10620edb85ddb04b26bd2e775b089dba01cc726278cc2d15e",
+    "results/metrics/20260923T161927565554Z-stage5-validation": "c09407d7542db358e8afd1d222cd498b8b5f442c94709bf4ea88af648390b1ce"
+  },
+  "stage6_case_scores_sha256": "3ca7c4b212e02712f1380fe30e9dbd877ba1f43e45182bc04727213dced9fd3b",
+  "report_source_sha256": "fe373755d5ec6fad9c68aa24736d423fa30619c49b2188886280a29dab80ad73"
+}

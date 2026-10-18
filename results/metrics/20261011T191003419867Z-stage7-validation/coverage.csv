@@ -1,0 +1,9 @@
+model,candidate,scheduled_jobs,failed_jobs
+ARIMA,arima_011,600,1
+Chronos-2,chronos2,600,0
+ETS,ets_ann,600,0
+Moirai,moirai11small,600,0
+TimesFM,timesfm25,600,0
+XGBoost,xgb_depth3_rounds300,600,0
+last_value,last_value,600,0
+weekly_seasonal_naive,weekly_seasonal_naive,600,0

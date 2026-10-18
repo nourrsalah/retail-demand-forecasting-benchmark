@@ -1,0 +1,4 @@
+model_a,model_b,metric,difference_a_minus_b,ci_lower,ci_upper,common_complete_series,excluded_series,replicates,horizon_weight,interpretation
+XGBoost,XGBoost + business features,MAE,-0.012468691159184031,-0.023270684857818136,-0.0016696946280220296,200,0,2000,1/3 each,negative favors model_a; descriptive validation interval
+XGBoost,XGBoost + business features,RMSSE,0.004157315158248465,-0.00010338465064407231,0.008322467299805719,200,0,2000,1/3 each,negative favors model_a; descriptive validation interval
+XGBoost,XGBoost + business features,WAPE,-0.008825398017885733,-0.017009322966718036,-0.0011666312460461494,200,0,2000,1/3 each,negative favors model_a; descriptive validation interval

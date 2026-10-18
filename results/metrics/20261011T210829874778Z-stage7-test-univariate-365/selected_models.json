@@ -1,0 +1,14 @@
+{
+  "selected_candidates": {
+    "ARIMA": "arima_011",
+    "ETS": "ets_ann",
+    "last_value": "last_value",
+    "weekly_seasonal_naive": "weekly_seasonal_naive",
+    "XGBoost": "xgb_depth3_rounds300",
+    "Chronos-2": "chronos2",
+    "TimesFM": "timesfm25",
+    "Moirai": "moirai11small"
+  },
+  "selection_data": "validation_only",
+  "test_tuning": false
+}

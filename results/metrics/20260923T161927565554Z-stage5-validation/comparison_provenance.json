@@ -1,0 +1,7 @@
+{
+  "stage4_run": "20260923T142001461574Z-stage4-validation",
+  "stage5_run": "20260923T161927565554Z-stage5-validation",
+  "report_source_sha256": "dd7d3d807b4d7c697ca628b86626aa048c1c2af4a77e351a3d6248730b43148b",
+  "stage4_case_scores_sha256": "1041eb88492f77b10620edb85ddb04b26bd2e775b089dba01cc726278cc2d15e",
+  "stage5_case_scores_sha256": "c09407d7542db358e8afd1d222cd498b8b5f442c94709bf4ea88af648390b1ce"
+}
