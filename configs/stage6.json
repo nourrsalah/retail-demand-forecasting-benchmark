@@ -1,0 +1,52 @@
+{
+  "stage": 6,
+  "split": "validation",
+  "scenario": "univariate",
+  "history_days": 365,
+  "seed": 42,
+  "device": "cpu",
+  "threads": 4,
+  "batch_size": 4,
+  "workers": 1,
+  "warm_inference_repeats": 3,
+  "worker_timeout_seconds": 1800,
+  "minimum_free_disk_gib": 2,
+  "checkpoint_lock": "configs/stage6_checkpoints.json",
+  "environment_python": ".venv-stage6/bin/python",
+  "models": [
+    {
+      "id": "chronos2",
+      "model": "Chronos-2",
+      "repo_id": "amazon/chronos-2",
+      "point_estimator": "native_median",
+      "mean_comparison_eligible": false,
+      "cross_learning": false,
+      "pretraining_audit_status": "M5_disjointness_not_verified"
+    },
+    {
+      "id": "timesfm25",
+      "model": "TimesFM",
+      "repo_id": "google/timesfm-2.5-200m-pytorch",
+      "point_estimator": "native_mean",
+      "mean_comparison_eligible": true,
+      "max_context": 384,
+      "max_horizon": 128,
+      "normalize_inputs": true,
+      "force_flip_invariance": true,
+      "pretraining_audit_status": "M5_disjointness_not_verified"
+    },
+    {
+      "id": "moirai11small",
+      "model": "Moirai",
+      "repo_id": "Salesforce/moirai-1.1-R-small",
+      "point_estimator": "sample_mean_200",
+      "mean_comparison_eligible": true,
+      "patch_size": 16,
+      "num_samples": 200,
+      "pretraining_audit_status": "published_M5_family_corpus_overlap_checkpoint_lineage_unverified"
+    }
+  ],
+  "stage4_reference_run": "20260923T142001461574Z-stage4-validation",
+  "stage5_reference_run": "20260923T161927565554Z-stage5-validation",
+  "pretraining_overlap": "not_certified_disjoint_from_M5_no_clean_zero_shot_generalization_claim"
+}

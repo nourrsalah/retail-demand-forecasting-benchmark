@@ -1,0 +1,11 @@
+# Separate environment: avoids changing the verified Stage 1–5 dependencies.
+numpy==1.26.4
+pandas==2.2.3
+scipy==1.11.4
+torch==2.4.1
+transformers==4.51.3
+chronos-forecasting>=2.0,<3
+timesfm==3.0.2
+uni2ts>=2.0,<3
+huggingface-hub>=0.28,<1
+psutil==7.2.2

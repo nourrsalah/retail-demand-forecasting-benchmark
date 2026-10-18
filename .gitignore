@@ -4,3 +4,17 @@ data/processed/
 __pycache__/
 .ipynb_checkpoints/
 .DS_Store
+
+# Foundation-model environments and downloaded checkpoints
+.venv-stage6/
+.cache/
+checkpoints/
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+
+# Local credentials
+.env
+.env.*
+!.env.example

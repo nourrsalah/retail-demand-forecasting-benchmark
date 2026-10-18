@@ -1,0 +1,73 @@
+{
+  "models": {
+    "chronos2": {
+      "repo_id": "amazon/chronos-2",
+      "revision": "29ec3766d36d6f73f0696f85560a422f50e8498c",
+      "files": {
+        "README.md": {
+          "size": 7773,
+          "expected_sha256": null,
+          "sha256": "c7b29bc88f5bc3ebc6e7213b6353be80090d671fefa4aa74ed20498838c16558"
+        },
+        "config.json": {
+          "size": 1067,
+          "expected_sha256": null,
+          "sha256": "ef1143bfdc9c0376d9a056eefca46cb4b1ec3d0ffacd541ff56feb40fb708031"
+        },
+        "model.safetensors": {
+          "size": 477930472,
+          "expected_sha256": "ddcda3c7508bf2528087723e98a20707cc04b7f370ae275a9fd88078ddba4f42",
+          "sha256": "ddcda3c7508bf2528087723e98a20707cc04b7f370ae275a9fd88078ddba4f42"
+        }
+      },
+      "snapshot_path": ".cache/huggingface/hub/models--amazon--chronos-2/snapshots/29ec3766d36d6f73f0696f85560a422f50e8498c",
+      "download_seconds": 201.1341201660107
+    },
+    "timesfm25": {
+      "repo_id": "google/timesfm-2.5-200m-pytorch",
+      "revision": "1d952420fba87f3c6dee4f240de0f1a0fbc790e3",
+      "files": {
+        "README.md": {
+          "size": 2496,
+          "expected_sha256": null,
+          "sha256": "4c3f16633a3d8b9324904bf004429aced2ee009b84e64effb59a902520cc7f2e"
+        },
+        "config.json": {
+          "size": 475,
+          "expected_sha256": null,
+          "sha256": "cd3315b760d5cc7e278d7afdf41b897031ced888fc6c115bd9b3ac0ea2c47408"
+        },
+        "model.safetensors": {
+          "size": 925181104,
+          "expected_sha256": "2f776efe6245e42b24bc4153ffdf61810140210e4bd3b01fb21f7aa779ab6ce8",
+          "sha256": "2f776efe6245e42b24bc4153ffdf61810140210e4bd3b01fb21f7aa779ab6ce8"
+        }
+      },
+      "snapshot_path": ".cache/huggingface/hub/models--google--timesfm-2.5-200m-pytorch/snapshots/1d952420fba87f3c6dee4f240de0f1a0fbc790e3",
+      "download_seconds": 358.66838966700016
+    },
+    "moirai11small": {
+      "repo_id": "Salesforce/moirai-1.1-R-small",
+      "revision": "0c24ab99db2c1a70ea2a0fc03bf113329772ac64",
+      "files": {
+        "README.md": {
+          "size": 1185,
+          "expected_sha256": null,
+          "sha256": "6af4bdf28250daca3766ec8a69af6218593391f8f7b32410f2841039d230f2a9"
+        },
+        "config.json": {
+          "size": 682,
+          "expected_sha256": null,
+          "sha256": "37b9eca5a0c3e58c2cdac3ecdbf897acbd009a20d6ba0f8a2ae0e8d92002fd47"
+        },
+        "model.safetensors": {
+          "size": 55320200,
+          "expected_sha256": "cc46831272ea07e99d78fe05c09e730c7c76a1b272cddbdaf5173dae371cb238",
+          "sha256": "cc46831272ea07e99d78fe05c09e730c7c76a1b272cddbdaf5173dae371cb238"
+        }
+      },
+      "snapshot_path": ".cache/huggingface/hub/models--Salesforce--moirai-1.1-R-small/snapshots/0c24ab99db2c1a70ea2a0fc03bf113329772ac64",
+      "download_seconds": 25.174494917009724
+    }
+  }
+}
