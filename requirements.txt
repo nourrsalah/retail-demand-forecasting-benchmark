@@ -1,4 +1,4 @@
-# Verified with Python 3.12. Stage 1–4 dependencies.
+# Verified with Python 3.12. Stage 1–5 dependencies.
 pandas==2.2.3
 numpy==2.3.5
 matplotlib==3.11.2
@@ -8,3 +8,5 @@ ipykernel==7.3.0
 statsmodels==0.15.0
 scipy==1.18.1
 psutil==7.2.2
+# macOS also needs libomp; see docs/environment_setup.md.
+xgboost==3.4.1

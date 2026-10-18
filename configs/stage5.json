@@ -1,0 +1,31 @@
+{
+  "stage": 5,
+  "split": "validation",
+  "scenario": "univariate",
+  "history_days": 365,
+  "seed": 42,
+  "forecast_strategy": "recursive_one_step",
+  "fit_scope": "pooled_global_across_pilot_series",
+  "features": {"lags": [1, 2, 7, 14, 28], "rolling_windows": [7, 28]},
+  "recursive_feedback": "nonnegative_clipped_prediction",
+  "target_scaling": "none",
+  "sample_weighting": "equal_training_rows",
+  "early_stopping": false,
+  "workers": 1,
+  "threads_per_fit": 4,
+  "fit_forecast_timeout_seconds": 1800,
+  "warm_inference_repeats": 3,
+  "rss_sample_interval_seconds": 0.01,
+  "failure_policy": "failed_pooled_job_marks_all_its_series_failed_no_fallback",
+  "base_params": {
+    "objective": "reg:squarederror", "tree_method": "hist", "device": "cpu",
+    "eta": 0.05, "subsample": 1.0, "colsample_bytree": 1.0,
+    "min_child_weight": 1.0, "lambda": 1.0, "alpha": 0.0, "verbosity": 0
+  },
+  "candidates": [
+    {"id": "xgb_depth3_rounds150", "model": "XGBoost", "family": "locally_trained_machine_learning", "max_depth": 3, "num_boost_round": 150},
+    {"id": "xgb_depth3_rounds300", "model": "XGBoost", "family": "locally_trained_machine_learning", "max_depth": 3, "num_boost_round": 300},
+    {"id": "xgb_depth6_rounds200", "model": "XGBoost", "family": "locally_trained_machine_learning", "max_depth": 6, "num_boost_round": 200}
+  ],
+  "stage4_reference_run": "20260923T142001461574Z-stage4-validation"
+}
