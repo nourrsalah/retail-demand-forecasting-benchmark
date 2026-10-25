@@ -14,7 +14,7 @@ Stage 5 adds pooled XGBoost using sales-history features and recursive forecasts
 
 Stage 6 adds frozen Chronos-2, TimesFM 2.5, and Moirai 1.1 small adapters in an isolated environment. See [Stage 6 design](docs/stage6.md) and the [pretraining audit](docs/pretraining_audit.md). The completed 200-series validation run is summarized in [Stage 6 results](docs/stage6_results.md): all 1,800 model/series/origin forecasts succeeded. Checkpoints are pinned and ignored by Git; Stage 6 itself uses validation only.
 
-Stage 7 completes independent validation selection for 90/180-day histories and a separate 365-day business-feature XGBoost condition. All choices are frozen in `configs/stage7_freeze.json` before the four final test origins. See [Stage 7 execution design](docs/stage7_design.md). Final evaluation is complete: 20,000 scheduled forecast jobs, with 42 failures retained without fallbacks. See the [final comparison report](docs/stage7_final_results.md).
+Stage 7 completes independent validation selection for 90/180-day histories and a separate 365-day business-feature XGBoost condition. All choices are frozen in `configs/stage7_freeze.json` before the four final test origins. See [Stage 7 execution design](docs/stage7_design.md). Final evaluation is complete: 20,000 scheduled forecast jobs, with 42 failures retained without fallbacks. See the [final comparison and business interpretation](docs/final_comparison_report.md) and [audited score report](docs/stage7_final_results.md).
 
 ## Setup and reproduce
 
