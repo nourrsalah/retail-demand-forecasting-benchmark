@@ -1,24 +1,66 @@
 # Retail Demand Forecasting Benchmark
 
-**Research question:** When do pretrained time-series models provide a real advantage for business demand forecasting, and when do locally trained models remain more reliable?
+**When do pretrained time-series models give a real advantage for retail demand forecasting, and when do classic local models remain the better choice?**
 
-Planned comparisons: ARIMA, ETS, XGBoost, Chronos-2, TimesFM, and Moirai, with simple naive references. The focus is accuracy, reliability across demand conditions, and operational practicality—not one universal winner.
+This project benchmarks **8 forecasting methods** on **200 Walmart (M5) product–store series**, from naive baselines and ARIMA/ETS to pooled XGBoost and three pretrained foundation models (Chronos-2, TimesFM 2.5, Moirai 1.1). All model choices were **frozen on validation data before the final test**, and every model was scored on accuracy, reliability, failures, runtime and memory.
 
-## Current scope
+## Key findings
 
-Stages 1 and 2 are complete: data understanding and a reproducible 200-series pilot. Stage 3’s core design is locked in [the evaluation protocol](docs/evaluation_protocol.md) and `configs/evaluation.json`: 365-day primary history, later 90/180/365 sensitivity, and separate univariate/business-feature experiments.
+- **Pretrained models gave real but modest gains.** TimesFM had the best scaled error (RMSSE), **1.5% lower than ARIMA**. Chronos-2 had the best absolute error, with **MAE 6.7% lower than ARIMA**, but it ranked behind ARIMA on RMSSE. No single model won on every metric.
+- **The gains come at a cost.** TimesFM used **~10× ARIMA's memory** (1,530 MiB vs 152 MiB) and needed model downloads and a separate environment. ARIMA and ETS stayed close in accuracy and are cheap to run.
+- **Short history:** pretrained models stayed strong with only 90 days of history. ARIMA and ETS failed to converge on 42 of 20,000 forecast jobs, all at 90 or 180 days of history.
+- **Business features (calendar, events, SNAP, prices) did not clearly help XGBoost.** RMSSE improved slightly, but MAE and WAPE got worse.
+- **Recommendation:** keep ARIMA/ETS as low-cost defaults. Consider TimesFM when a small gain in scaled error justifies the extra infrastructure, and Chronos-2 when absolute error matters most.
 
-Stage 4 implements last-value and weekly seasonal-naive references, ARIMA, and ETS. See [Stage 4](docs/stage4.md) for prespecified candidates, validation-only execution, resource measurements, and limitations. Stages 4–6 use validation only; final-test execution is handled separately by Stage 7 after choices are frozen. The completed 200-series validation run is summarized in [Stage 4 results](docs/stage4_results.md).
+![Primary accuracy comparison](results/figures/stage7-final/accuracy_comparison.png)
 
-Stage 5 adds pooled XGBoost using sales-history features and recursive forecasts under the same univariate validation protocol. See [Stage 5 design](docs/stage5.md) and [Stage 5 results](docs/stage5_results.md). The business-feature and shorter-history validation experiments are implemented in Stage 7.
+## Results (365-day history, final test)
 
-Stage 6 adds frozen Chronos-2, TimesFM 2.5, and Moirai 1.1 small adapters in an isolated environment. See [Stage 6 design](docs/stage6.md) and the [pretraining audit](docs/pretraining_audit.md). The completed 200-series validation run is summarized in [Stage 6 results](docs/stage6_results.md): all 1,800 model/series/origin forecasts succeeded. Checkpoints are pinned and ignored by Git; Stage 6 itself uses validation only.
+| Method | RMSSE ↓ | MAE ↓ | WAPE ↓ | Peak memory (MiB) |
+| --- | ---: | ---: | ---: | ---: |
+| **TimesFM 2.5** | **0.6914** | 1.0751 | 76.26% | 1,530 |
+| ARIMA | 0.7019 | 1.1050 | 78.38% | 152 |
+| ETS | 0.7029 | 1.1073 | 78.55% | 152 |
+| XGBoost (pooled) | 0.7203 | 1.1019 | 78.17% | 205 |
+| Moirai 1.1 small | 0.7245 | 1.1453 | 81.24% | 567 |
+| **Chronos-2** | 0.7291 | **1.0313** | **73.15%** | 677 |
+| Last value | 0.9097 | 1.3791 | 97.83% | 152 |
+| Weekly seasonal naive | 0.9212 | 1.3184 | 93.52% | 152 |
 
-Stage 7 completes independent validation selection for 90/180-day histories and a separate 365-day business-feature XGBoost condition. All choices are frozen in `configs/stage7_freeze.json` before the four final test origins. See [Stage 7 execution design](docs/stage7_design.md). Final evaluation is complete: 20,000 scheduled forecast jobs, with 42 failures retained without fallbacks. See the [final comparison and business interpretation](docs/final_comparison_report.md) and [audited score report](docs/stage7_final_results.md).
+Scores are averaged with equal weight over 7-, 14- and 28-day horizons and four final forecast origins (Jan–Apr 2016). Chronos-2's figures come from its native median forecast. All other models report mean forecasts, and a separate mean-only comparison is included in the evidence folder. Paired bootstrap 95% intervals show that TimesFM's RMSSE advantage over ARIMA is real: ARIMA − TimesFM = 0.0106 [0.0067, 0.0146]. Full interpretation: **[final comparison report](docs/final_comparison_report.md)**.
 
-## Setup and reproduce
+## How the evaluation works
 
-Use Python 3.12. XGBoost also requires libomp on macOS; see [environment setup](docs/environment_setup.md). From the project root:
+- **Data:** 200 established product–store series from the [M5 competition](https://www.kaggle.com/competitions/m5-forecasting-accuracy), sampled to balance stores, states, categories and demand types (intermittent, stable, volatile). See [pilot selection](docs/pilot_selection.md).
+- **No test leakage:** models were tuned on three earlier validation origins. All choices were then frozen in `configs/stage7_freeze.json`, with source and config hashes, before the four test origins were run.
+- **Scale:** 20,000 scheduled forecast jobs across 90/180/365-day histories. **99.79% succeeded**, and the 42 failures were kept in the results instead of being replaced with fallback forecasts.
+- **Metrics:** RMSSE (the primary metric), MAE and WAPE; per-series reliability percentiles; win rates; runtime and peak memory.
+- **Uncertainty:** paired bootstrap confidence intervals that resample whole series.
+- **Pretraining audit:** Moirai's pretraining corpus includes M5, and its checkpoint carries a non-commercial license. These limits are documented in the [pretraining audit](docs/pretraining_audit.md).
+
+## Limitations
+
+- The sample is balanced for diversity, so it is not representative of the full M5 population. Cold-start (new) products are excluded.
+- Four test origins cannot cover every retail regime, such as holiday peaks.
+- RMSSE here is bottom-level and unweighted, which differs from the official hierarchical M5 WRMSSE.
+- Forecast accuracy is not the same as business value. Inventory savings would require a separate decision model that includes lead times, stockout costs and service levels.
+
+## Repository structure
+
+```
+configs/       Frozen evaluation, model and experiment settings
+docs/          Protocol, per-stage design and results, final report, pretraining audit
+notebooks/     Data understanding and pilot dataset construction
+src/data/      Loading, auditing and pilot selection pipeline
+src/models/    Statistical, XGBoost and foundation-model adapters
+src/evaluation/ Windows, metrics, stage runners and report generation
+tests/         Unit tests for the pipeline and each stage
+results/       Metrics, forecasts and figures (final results in results/metrics/stage7-final-*)
+```
+
+## Reproduce
+
+Requires Python 3.12. On macOS, XGBoost also needs `libomp` (see [environment setup](docs/environment_setup.md)). Download the three original M5 CSVs into `data/raw/` first.
 
 ```bash
 python3.12 -m venv .venv
@@ -26,70 +68,25 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 python -m src.data.pipeline
 python -m unittest discover -s tests -v
-# Stage 4: smoke check, then the full validation pilot
-python -m src.evaluation.stage4 --smoke
+
+# Statistical baselines and XGBoost (validation)
 python -m src.evaluation.stage4
-# Stage 5: pooled XGBoost validation
-python -m src.evaluation.stage5 --smoke
 python -m src.evaluation.stage5
+
+# Foundation models run in an isolated environment
+python -m venv .venv-stage6
+.venv-stage6/bin/python -m pip install -r requirements/stage6.lock.txt
+.venv-stage6/bin/python -m src.utils.prepare_stage6
+python -m src.evaluation.stage6
+
+# Final test and reports
+python -m src.evaluation.benchmark test
+python -m src.evaluation.report_benchmark
+python -m analysis.stage7_history
 ```
 
-Place the three original M5 CSVs in `data/raw/` before running. In VS Code, select `.venv/bin/python` as the notebook kernel and run notebooks from the `notebooks/` working directory. The notebooks contain saved outputs; the pipeline rebuilds their underlying tables/figures, and rerunning the notebooks refreshes displayed results.
+The final test periods have already been evaluated. Any new experiment on them should be treated as a follow-up robustness study and must not be used to retune models. The full workflow and change-control rules are in the [evaluation protocol](docs/evaluation_protocol.md) and the [Stage 7 design](docs/stage7_design.md).
 
-The local environment used for this run is Python 3.12 with access to bundled pandas/NumPy packages; the requirements above allow a standalone environment to be built without that bundle. Run provenance includes actual package versions and source-file SHA-256 hashes.
+## Project stages
 
-### Stage 7 execution and reporting
-
-The existing checkout is frozen. Resume its scheduled final conditions and regenerate reports with:
-
-```bash
-MPLCONFIGDIR=.cache/matplotlib .venv/bin/python -m src.evaluation.benchmark test
-MPLCONFIGDIR=.cache/matplotlib .venv/bin/python -m src.evaluation.report_benchmark
-MPLCONFIGDIR=.cache/matplotlib .venv/bin/python -m analysis.stage7_history
-```
-
-Completed test conditions are reused, not rerun or retuned. The last command creates the identical-target history comparison and updates the report. Its analysis source was also hashed before testing. The source/data/configuration freeze is verified before test execution.
-
-For a fresh benchmark before any test access, the execution order is validation, model-choice freeze, supplementary-analysis freeze (`python -m analysis.stage7_history --freeze`), then test and reporting. The current validation selections and test results must not be used to retune models on the same holdout.
-
-## Where to look
-
-- `notebooks/01_data_understanding.ipynb`: original user cells plus missingness, hierarchy, event/SNAP, price coverage, and demand plots.
-- `notebooks/02_pilot_dataset.ipynb`: reproducibility checks, sample composition, and joined daily data.
-- `src/data/pipeline.py`: reusable loading, audit, profiling, selection, transformation, and figure generation.
-- `configs/pilot.json`: sample size, seed, historical cutoff, and demand thresholds.
-- `docs/pilot_selection.md`: exact selection procedure and limitations.
-- `docs/evaluation_protocol.md`: reviewed v1.0 evaluation rules and change-control policy.
-- `data/README.md`: source schema and missing-data interpretation.
-- `data/processed/`: ignored derived profiles, selected series, and compressed long-form pilot.
-- `results/metrics/`: audit, pilot membership manifest, hierarchy/event tables, and run provenance; includes data summaries plus separate Stage 4 validation run directories.
-- `results/figures/`: representative historical demand and sample composition.
-- `src/models/statistical.py`: statistical and reference adapters.
-- `src/models/foundation.py`: frozen pretrained adapters; `src/evaluation/stage6.py` runs their validation.
-- `configs/stage6.json`: frozen checkpoint choices, estimators, CPU and batch settings.
-- `src/models/xgboost_model.py`: lag/rolling features, pooled fitting, and recursive forecasts.
-- `src/evaluation/`: validation windows, metrics, candidate selection, and Stage 4 runner.
-- `results/forecasts/`: compressed candidate and selected-model validation forecasts.
-- `configs/stage4.json`: prespecified statistical search and resource settings.
-- `configs/stage5.json`: prespecified XGBoost search, features, and resource settings.
-
-## Pilot design
-
-Sample 200 established product/store series across all stores, states, and categories. Selection statistics use only d_1–d_730, ending 2013-01-27. Round-robin sampling balances store/category groups and observed demand/volume strata, with seed 42. Melt the selected data and attach calendar/weekly prices using validated joins. Missing prices remain missing.
-
-The sample intentionally emphasizes diversity, so its average results are not population estimates. Products inactive throughout the sampling prefix are excluded; simulated limited-history tests cannot establish real new-product performance. Raw data are never overwritten, and both raw and processed data are ignored by Git.
-
-## Roadmap
-
-1. Data understanding.
-2. Create pilot dataset.
-3. Shared evaluation rules (core design and Stage 7 execution choices frozen).
-4. Simple baselines, ARIMA, and ETS.
-5. XGBoost.
-6. Chronos-2, TimesFM, and Moirai.
-7. Run the shared protocol.
-8. Consolidate results.
-9. Analyze when pretrained versus local models work better.
-10. Business practicality and final conclusions.
-
-Keep notebooks exploratory, model code reusable, and test outcomes out of sampling, tuning, and protocol decisions. GitHub publication, broader result interpretation, and final business conclusions remain later work.
+1. Data understanding → 2. Pilot dataset → 3. Evaluation protocol → 4. Baselines, ARIMA, ETS → 5. XGBoost → 6. Chronos-2, TimesFM, Moirai → 7. Frozen final test and business interpretation. Each stage has its own design and results document in `docs/`.
